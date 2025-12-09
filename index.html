@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StoreData IP Ltd – Software Components & Internal Licensing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="StoreData IP Ltd develops, maintains and manages reusable software components and technology assets used within the StoreData Group. Internal software licensing only, no services to external customers."
+  />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2933;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #0b1220 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.82),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 20px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #38bdf8, #0ea5e9 35%, #0369a1);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 10px 30px rgba(56, 189, 248, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: #e5f6ff;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 40px 20px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 28px;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.8);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.9);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22c55e, #16a34a);
+      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.7),
+        0 0 16px rgba(34, 197, 94, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(to right, #38bdf8, #a5b4fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 20px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .meta-card {
+      border-radius: 14px;
+      border: 1px solid rgba(30, 64, 175, 0.7);
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      padding: 10px 12px;
+      font-size: 12px;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 12px;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+    }
+
+    .info-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, #1d283a 0, #020617 55%);
+      border: 1px solid rgba(30, 64, 175, 0.85);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .badge {
+      align-self: flex-start;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .info-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .info-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr;
+      gap: 10px;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    .info-value {
+      font-size: 12px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(51, 65, 85, 0.7),
+        transparent
+      );
+      margin: 6px 0 4px;
+    }
+
+    .info-note {
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 10px;
+      padding: 8px 9px;
+      border: 1px dashed rgba(51, 65, 85, 0.9);
+    }
+
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 8px 20px 32px;
+    }
+
+    .section-inner {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(30, 64, 175, 0.75);
+      background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.4fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .section-inner {
+        padding: 16px 14px 14px;
+      }
+      .section-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .section-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .list {
+      list-style: none;
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .list-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: radial-gradient(circle at 30% 0, #38bdf8, #0ea5e9);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .mini-card {
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 10px 11px 8px;
+      font-size: 12px;
+    }
+
+    .mini-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .mini-value {
+      font-size: 12px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.85);
+      margin-top: 24px;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 20px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo">IP</div>
+          <div class="brand">
+            <span class="brand-title">StoreData IP Ltd</span>
+            <span class="brand-sub">Software Components & Internal Licensing</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#activities">Activities</a>
+          <a href="#group">Group</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            GROUP INTERNAL IP COMPANY
+          </div>
+          <h1>
+            Software components & technology assets
+            <span class="hero-highlight">for the StoreData Group</span>
+          </h1>
+          <p class="hero-subtitle">
+            StoreData IP Ltd develops, maintains and manages reusable software components
+            and technology assets that are used internally by affiliated companies within
+            the StoreData Group. The company provides software licences only on an
+            intra-group basis and does not serve external customers.
+          </p>
+          <div class="pill-row">
+            <div class="pill">Intellectual Property Management</div>
+            <div class="pill">Internal Software Licensing</div>
+            <div class="pill">No External Clients</div>
+          </div>
+
+          <div class="hero-meta">
+            <div class="meta-card">
+              <div class="meta-label">Legal entity</div>
+              <div class="meta-value">
+                StoreData IP Ltd<br />
+                Company No. HE 484586 (Cyprus)
+              </div>
+            </div>
+            <div class="meta-card">
+              <div class="meta-label">Primary activity</div>
+              <div class="meta-value">
+                Development, management and internal licensing of software modules and
+                technology components.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <aside class="info-card" aria-label="Key company information">
+            <div class="badge">Profile</div>
+            <div>
+              <div class="info-title">StoreData IP Ltd</div>
+              <div class="info-text">
+                Non-trading intellectual property company within the StoreData Group.
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div>
+                <div class="info-label">Jurisdiction</div>
+                <div class="info-value">Republic of Cyprus</div>
+              </div>
+              <div>
+                <div class="info-label">Role</div>
+                <div class="info-value">Group IP holder & licensor</div>
+              </div>
+            </div>
+
+            <div class="info-grid">
+              <div>
+                <div class="info-label">Clients</div>
+                <div class="info-value">
+                  Affiliated companies within the StoreData Group only.
+                </div>
+              </div>
+              <div>
+                <div class="info-label">Commercial trading</div>
+                <div class="info-value">No services to external customers.</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="info-note">
+              StoreData IP Ltd does not operate as a financial institution and does not
+              hold or manage client funds. All activities relate solely to group-internal
+              intellectual property and software licensing.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="section-inner">
+          <div class="section-title">About</div>
+          <div class="section-heading">Purpose & scope of StoreData IP Ltd</div>
+          <div class="section-grid">
+            <div class="section-text">
+              <p>
+                StoreData IP Ltd was incorporated to centralise the ownership and
+                governance of software assets developed for and used by the StoreData
+                Group. Its mandate is to ensure that core components are maintained,
+                documented and made available to group companies in a consistent and
+                controlled way.
+              </p>
+              <p style="margin-top: 8px;">
+                The company does not advertise, market or sell products or services to
+                third parties. All activities are strictly intra-group and support the
+                operational entities that interact with end customers.
+              </p>
+              <ul class="list">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>Centralised ownership of key software modules and technology assets.</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>Clear segregation between operational business and IP management.</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>Transparent, documented intra-group licensing model.</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="two-col">
+                <div class="mini-card">
+                  <div class="mini-label">Legal form</div>
+                  <div class="mini-value">
+                    Private Limited Company<br />
+                    Registered in Cyprus (HE 484586)
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-label">Primary counter-parties</div>
+                  <div class="mini-value">
+                    StoreData Group companies only (no third-party clients).
+                  </div>
+                </div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Software IP</span>
+                <span class="tag">B2B Intra-Group Only</span>
+                <span class="tag">Non-Trading Entity</span>
+                <span class="tag">No Client Funds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities -->
+      <section id="activities" class="section">
+        <div class="section-inner">
+          <div class="section-title">Activities</div>
+          <div class="section-heading">Core activities & income sources</div>
+          <div class="section-grid">
+            <div class="section-text">
+              <p>
+                StoreData IP Ltd focuses on a clearly defined set of activities related to
+                software and intellectual property:
+              </p>
+              <ul class="list" style="margin-top: 8px;">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>
+                    <strong>Development & maintenance</strong> of reusable software modules
+                    and technology components.
+                  </span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>
+                    <strong>Documentation & governance</strong> of the group’s intellectual
+                    property, including technical specifications and usage guidelines.
+                  </span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span>
+                    <strong>Internal licensing</strong> of these components to affiliated
+                    companies within the StoreData Group under documented intercompany
+                    agreements.
+                  </span>
+                </li>
+              </ul>
+              <p style="margin-top: 8px;">
+                The company does not engage in consulting, hosting, support services or any
+                form of trading with external entities.
+              </p>
+            </div>
+            <div>
+              <div class="mini-card">
+                <div class="mini-label">Income profile</div>
+                <div class="mini-value">
+                  The majority of income consists of internal licence fees paid by group
+                  companies for the use of software modules and related technology.
+                </div>
+              </div>
+              <div class="mini-card" style="margin-top: 10px;">
+                <div class="mini-label">Exclusions</div>
+                <div class="mini-value">
+                  StoreData IP Ltd:
+                  <ul class="list" style="margin-top: 4px;">
+                    <li>
+                      <span class="list-bullet"></span>
+                      <span>does not provide services to external customers,</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet"></span>
+                      <span>does not operate as a financial institution,</span>
+                    </li>
+                    <li>
+                      <span class="list-bullet"></span>
+                      <span>does not hold or manage client or investor funds.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Group context -->
+      <section id="group" class="section">
+        <div class="section-inner">
+          <div class="section-title">Group</div>
+          <div class="section-heading">Position within the StoreData Group</div>
+          <div class="section-grid">
+            <div class="section-text">
+              <p>
+                StoreData IP Ltd is part of the StoreData Group and operates as the
+                central intellectual property entity. It is owned by the group holding
+                company, which in turn holds the operating subsidiaries that interface
+                with customers and markets.
+              </p>
+              <p style="margin-top: 8px;">
+                This structure ensures that software components and technology assets are
+                managed with clear legal ownership and consistent technical standards,
+                while leaving commercial and client-facing activities to the dedicated
+                operating companies.
+              </p>
+            </div>
+            <div>
+              <div class="two-col">
+                <div class="mini-card">
+                  <div class="mini-label">Parent company</div>
+                  <div class="mini-value">
+                    StoreData Holdings Ltd<br />
+                    Non-trading holding company (Cyprus).
+                  </div>
+                </div>
+                <div class="mini-card">
+                  <div class="mini-label">Operating entities</div>
+                  <div class="mini-value">
+                    Group operating companies use the software components licensed from
+                    StoreData IP Ltd in their service delivery to end customers.
+                  </div>
+                </div>
+              </div>
+              <div class="tag-row">
+                <span class="tag">Group Internal Function</span>
+                <span class="tag">Governance & Control</span>
+                <span class="tag">IP Protection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact / Legal -->
+      <section id="contact" class="section">
+        <div class="section-inner">
+          <div class="section-title">Contact & Legal</div>
+          <div class="section-grid">
+            <div class="section-text">
+              <p>
+                For regulatory, compliance or business-related enquiries concerning
+                StoreData IP Ltd, please use the contact details below.
+              </p>
+              <ul class="list" style="margin-top: 8px;">
+                <li>
+                  <span class="list-bullet"></span>
+                  <span><strong>Email:</strong> <a href="mailto:info@storedata.tech">info@storedata.tech</a></span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span><strong>Jurisdiction:</strong> Republic of Cyprus</span>
+                </li>
+                <li>
+                  <span class="list-bullet"></span>
+                  <span><strong>Legal Entity Number:</strong> HE 484586</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <div class="mini-card">
+                <div class="mini-label">Important notice</div>
+                <div class="mini-value">
+                  StoreData IP Ltd does not solicit or onboard external clients and does
+                  not provide financial, investment, or regulated services. This website
+                  is for informational and compliance purposes only.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> StoreData IP Ltd. All rights reserved.</div>
+        <div class="footer-links">
+          <span>Non-trading intra-group IP company</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
